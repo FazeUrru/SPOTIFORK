@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 // Tipos
@@ -30,6 +30,18 @@ interface AppSettings {
   language: string;
 }
 
+interface ChatMessage {
+  id: number;
+  text: string;
+  sender: 'user' | 'livi';
+  timestamp: Date;
+}
+
+interface DailySuggestion {
+  id: number;
+  text: string;
+}
+
 const defaultSettings: AppSettings = {
   darkMode: true,
   audioQuality: 'normal',
@@ -41,6 +53,66 @@ const defaultSettings: AppSettings = {
   notifications: true,
   language: 'es',
 };
+
+// Sugerencias diarias para DJ LiVi (se actualizan cada día)
+const allSuggestions: DailySuggestion[][] = [
+  [
+    { id: 1, text: "🎵 Pon algo relajante para estudiar" },
+    { id: 2, text: "🔥 Necesito energía para el gym" },
+    { id: 3, text: "☕ Música suave para la mañana" },
+    { id: 4, text: "🌙 Algo tranquilo para dormir" },
+    { id: 5, text: "🎉 Fiesta en casa este fin de semana" },
+    { id: 6, text: "🚗 Playlist para viaje largo" },
+  ],
+  [
+    { id: 1, text: "🎸 Rock clásico de los 80s" },
+    { id: 2, text: "🎹 Electrónica para programar" },
+    { id: 3, text: "🎺 Jazz para cena romántica" },
+    { id: 4, text: "🎤 Pop latino actual" },
+    { id: 5, text: "🥁 Beats para concentrarme" },
+    { id: 6, text: "🌈 Canciones felices para animarme" },
+  ],
+  [
+    { id: 1, text: "🎻 Clásica para leer" },
+    { id: 2, text: "🎷 Blues para tarde lluviosa" },
+    { id: 3, text: "🎪 Reggaeton para bailar" },
+    { id: 4, text: "🌟 Éxitos del momento" },
+    { id: 5, text: "🎯 Indie alternativo" },
+    { id: 6, text: "💫 Algo nuevo y diferente" },
+  ],
+  [
+    { id: 1, text: "🏃 Running intensivo" },
+    { id: 2, text: "🧘 Meditación y mindfulness" },
+    { id: 3, text: "🎭 Bandas sonoras épicas" },
+    { id: 4, text: "🍳 Cocina con ritmo" },
+    { id: 5, text: "📚 Focus total para trabajar" },
+    { id: 6, text: "🎨 Creatividad artística" },
+  ],
+  [
+    { id: 1, text: "🌅 Amanecer acústico" },
+    { id: 2, text: "🌃 Noche urbana" },
+    { id: 3, text: "🎪 Festival virtual" },
+    { id: 4, text: "☁️ Dream pop etéreo" },
+    { id: 5, text: "⚡ Electro swing divertido" },
+    { id: 6, text: "🌊 Chillwave relajante" },
+  ],
+  [
+    { id: 1, text: "🎸 Guitarra española" },
+    { id: 2, text: "🥁 Percusión africana" },
+    { id: 3, text: "🎺 Trompeta jazzística" },
+    { id: 4, text: "🎹 Piano minimalista" },
+    { id: 5, text: "🎻 Cuerdas orquestales" },
+    { id: 6, text: "🌍 World music global" },
+  ],
+  [
+    { id: 1, text: "🚀 Synthwave futurista" },
+    { id: 2, text: "🦄 K-pop energético" },
+    { id: 3, text: "🤠 Country moderno" },
+    { id: 4, text: "🎪 Cabaret vintage" },
+    { id: 5, text: "🌌 Ambient espacial" },
+    { id: 6, text: "🎯 Trap latino" },
+  ]
+];
 
 function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'search' | 'library' | 'settings'>('home');
