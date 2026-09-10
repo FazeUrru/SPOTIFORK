@@ -3,8 +3,11 @@
 > **Cliente no oficial de Spotify: El catálogo infinito de música y podcast en una sola app.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)]()
+[![Version](https://img.shields.io/badge/version-1.1.0-green.svg)]()
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![React](https://img.shields.io/badge/React-18.2-blue?logo=react)]()
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)]()
+[![Vite](https://img.shields.io/badge/Vite-5.0-purple?logo=vite)]()
 
 ---
 
@@ -32,197 +35,164 @@ Nuestro objetivo es proporcionar una alternativa que combine la potencia del cat
 - **Cola de Reproducción**: Gestión inteligente de la cola con reordenamiento drag-and-drop
 - **Historial de Reproducción**: Accede a tu historial completo de canciones escuchadas
 
-### 🎙️ Podcasts y Contenido Hablado
-- **Catálogo Completo de Podcasts**: Explora y reproduce miles de podcasts
-- **Marcadores Inteligentes**: Guarda tu posición exacta en cada episodio
-- **Velocidad de Reproducción Ajustable**: De 0.5x a 3x para adaptar el ritmo a tus necesidades
-- **Descubrimiento de Podcasts**: Recomendaciones basadas en tus intereses
-
 ### 🔍 Búsqueda y Descubrimiento
-- **Búsqueda Universal**: Encuentra canciones, álbumes, artistas, playlists y podcasts en un solo lugar
+- **Búsqueda Universal**: Encuentra canciones, álbumes, artistas y playlists en un solo lugar
 - **Filtros Avanzados**: Filtra por género, año, popularidad, duración y más
-- **Radio Basada en Canciones/Artistas**: Genera estaciones automáticas basadas en tus preferencias
-- **Tendencias y Charts**: Mantente actualizado con las canciones más populares
+- **Exploración por Categorías**: Navega por géneros musicales organizados visualmente
+- **Resultados en Tiempo Real**: Búsqueda instantánea mientras escribes
 
 ### 📚 Gestión de Bibliotecas
 - **Playlists Personalizadas**: Crea, edita y organiza tus playlists ilimitadas
-- **Playlist Colaborativas**: Comparte y edita playlists con amigos en tiempo real
-- **Álbumes Guardados**: Organiza tu colección de álbumes favoritos
-- **Artistas Seguidos**: Sigue a tus artistas favoritos y recibe notificaciones de nuevos lanzamientos
+- **Biblioteca Organizada**: Pestañas separadas para Playlists, Artistas y Álbumes
+- **Estado Vacío Inteligente**: Mensajes claros cuando no hay contenido
 
 ### ⚙️ Ajustes y Personalización
-- **Temas Visuales**: Modo claro, oscuro y temas personalizados
-- **Equalizador Integrado**: Ajusta frecuencias para optimizar tu experiencia auditiva
-- **Calidad de Audio**: Selecciona entre baja, normal, alta y muy alta calidad
-- **Atajos de Teclado**: Personaliza atajos para controlar la reproducción
-- **Notificaciones**: Configura alertas para nuevos lanzamientos y actividades sociales
-- **Privacidad**: Controla qué datos compartir y qué mantener privado
+- **Modo Oscuro/Claro**: Cambia entre temas según tu preferencia
+- **Calidad de Audio**: Selecciona entre baja (96 kbps), normal (160 kbps) o alta (320 kbps)
+- **Control de Volumen**: Ajusta el volumen por defecto con slider interactivo
+- **Reproducción Automática**: Activa/desactiva la reproducción automática de siguiente canción
 
-### 🌐 Características Sociales
-- **Perfiles de Usuario**: Personaliza tu perfil público con bio e imágenes
-- **Seguir Usuarios**: Conecta con amigos y descubre su música
-- **Actividad Reciente**: Comparte lo que estás escuchando en tiempo real
-- **Playlists Colaborativas**: Crea playlists junto con otros usuarios
-- **Comentarios y Likes**: Interactúa con playlists y perfiles de otros usuarios
+### 🎨 Interfaz Intuitiva
+- **Navegación Lateral**: Menú fijo con acceso rápido a todas las secciones
+- **Player Bar Persistente**: Controles de reproducción siempre visibles
+- **Tarjetas Interactivas**: Hover effects y animaciones suaves
+- **Ecualizador Animado**: Indicador visual de reproducción activa
+- **Diseño Responsivo**: Se adapta a diferentes tamaños de pantalla
 
-### 📱 Experiencia Multiplataforma
-- **Responsive Design**: Funciona perfectamente en desktop, tablet y móvil
-- **PWA (Progressive Web App)**: Instálala como app nativa en tu dispositivo
-- **Sincronización en Tiempo Real**: Tu biblioteca y preferencias sincronizadas en todos los dispositivos
-- **Modo Offline**: Descarga contenido para escuchar sin conexión (requiere premium)
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend**: React 18.2 + TypeScript
+- **Build Tool**: Vite 5.0
+- **Estilos**: CSS3 con Variables CSS
+- **Iconos**: Emojis nativos
+- **Animaciones**: CSS Keyframes
+
+---
+
+## 📦 Guía de Instalación y Uso
+
+### Prerrequisitos
+- Node.js 18+ instalado
+- npm o yarn
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/fazeurru/spotifork.git
+cd spotifork
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:5173`
+
+### Build para Producción
+
+```bash
+# Compilar para producción
+npm run build
+
+# Vista previa del build
+npm run preview
+```
+
+---
+
+## 🏗️ Estructura del Proyecto
+
+```
+spotifork/
+├── src/
+│   ├── App.tsx          # Componente principal con toda la lógica
+│   ├── App.css          # Estilos completos de la aplicación
+│   ├── main.tsx         # Punto de entrada
+│   └── assets/          # Recursos estáticos
+├── public/              # Archivos públicos
+├── index.html           # HTML base
+├── package.json         # Dependencias y scripts
+├── tsconfig.json        # Configuración TypeScript
+├── vite.config.ts       # Configuración Vite
+├── README.md            # Documentación
+└── LICENSE              # Licencia MIT
+```
 
 ---
 
 ## 🚀 Roadmap
 
-### ✅ Completado (v1.0.0)
-- [x] Autenticación con Spotify OAuth
-- [x] Reproductor de música básico
-- [x] Búsqueda de canciones, álbumes y artistas
-- [x] Creación y gestión de playlists básicas
-- [x] Interfaz responsive
+### ✅ Completado (v1.1.0)
+- [x] Interfaz de usuario moderna e intuitiva
+- [x] Navegación por pestañas (Inicio, Buscar, Biblioteca, Ajustes)
 - [x] Modo oscuro/claro
+- [x] Reproductor de música funcional
+- [x] Búsqueda en tiempo real
+- [x] Sistema de categorías
+- [x] Controles de volumen
+- [x] Ecualizador animado
+- [x] Diseño responsivo
+- [x] Animaciones y transiciones suaves
 
-### 🔄 En Desarrollo (v1.1.0 - Q1 2026)
-- [ ] Reproductor de podcasts completo
-- [ ] Equalizador de audio integrado
-- [ ] Playlists colaborativas en tiempo real
-- [ ] Sistema de recomendaciones mejorado
+### 🔄 En Desarrollo
+- [ ] Integración con API de Spotify
+- [ ] Autenticación de usuarios
+- [ ] Guardado de preferencias en localStorage
+- [ ] Soporte para podcasts
+
+### 📋 Planeado
+- [ ] Playlists colaborativas
+- [ ] Modo offline
+- [ ] Letras de canciones
+- [ ] Compartir en redes sociales
 - [ ] Notificaciones push
-- [ ] Atajos de teclado personalizables
 
-### 📋 Planeado (v1.2.0 - Q2 2026)
-- [ ] Modo offline con descargas
-- [ ] Análisis de listening stats avanzado
-- [ ] Integración con redes sociales externas
-- [ ] Temas visuales personalizables
-- [ ] Soporte para letras de canciones sincronizadas
-- [ ] Radio personalizada basada en IA
-
-### 🔮 Futuro (v2.0.0+)
-- [ ] Aplicaciones nativas (iOS, Android, Desktop)
-- [ ] Soporte para audio espacial
-- [ ] Eventos de escucha grupal en vivo
-- [ ] Marketplace de temas y extensiones
-- [ ] API pública para desarrolladores
-- [ ] Integración con servicios de terceros (Last.fm, MusicBrainz)
+### 🔮 Futuro
+- [ ] Aplicación móvil (React Native)
+- [ ] Extensión de navegador
+- [ ] Integración con otros servicios de streaming
+- [ ] Modo fiesta multiusuario
 
 ---
 
 ## 📝 Changelog
 
-### Versión 1.0.0 (Actual) - *Lanzamiento Inicial*
-**Fecha:** Diciembre 2025
+### v1.1.0 (Actual) - 2024
+**Mejoras de Interfaz**
+- ✨ Nueva interfaz más intuitiva y moderna
+- 🎨 Sistema de temas (oscuro/claro) completamente funcional
+- 🎯 Navegación mejorada con 4 secciones principales
+- 🎵 Player bar persistente con controles completos
+- ⚡ Animaciones optimizadas y transiciones suaves
 
-#### 🎉 Novedades
-- **Lanzamiento oficial** de SPOTIFORK
-- Implementación completa de autenticación OAuth 2.0 con Spotify
-- Reproductor de música con controles estándar (play, pause, skip, repeat, shuffle)
-- Sistema de búsqueda universal para todo el catálogo de Spotify
-- Gestión básica de playlists (crear, editar, eliminar, añadir/quitar canciones)
-- Interfaz responsive adaptada a móviles, tablets y desktop
-- Sistema de temas (modo claro y oscuro)
-- Integración con la API de Spotify para acceso al catálogo completo
-- Documentación completa y README detallado
+**Nuevas Características**
+- 🔍 Búsqueda en tiempo real con filtrado instantáneo
+- 📂 Exploración por categorías musicales
+- ⚙️ Panel de ajustes completo con múltiples opciones
+- 🎚️ Control de volumen independiente
+- 🎼 Ecualizador animado para tracks en reproducción
 
-#### 🐛 Correcciones
-- Optimización inicial de rendimiento en dispositivos móviles
-- Mejoras en la carga de imágenes de álbumes
-- Ajustes en la sincronización del estado del reproductor
+**Mejoras Técnicas**
+- 📱 Diseño completamente responsivo
+- ♿ Mejor accesibilidad
+- 🚀 Rendimiento optimizado
+- 🧹 Código refactorizado y limpio
 
-#### ⚡ Mejoras
-- Tiempos de carga optimizados
-- Navegación fluida entre secciones
-- Manejo elegante de errores de conexión
-
----
-
-## 🛠️ Instalación y Uso
-
-### Prerrequisitos
-- Node.js 18+ instalado
-- npm o yarn
-- Cuenta de Spotify (para autenticación)
-- Credenciales de API de Spotify (Client ID y Client Secret)
-
-### Pasos de Instalación
-
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/TU_USUARIO/spotifork.git
-cd spotifork
-```
-
-2. **Instalar dependencias**
-```bash
-npm install
-# o
-yarn install
-```
-
-3. **Configurar variables de entorno**
-```bash
-cp .env.example .env
-```
-
-Edita `.env` con tus credenciales de Spotify:
-```
-SPOTIFY_CLIENT_ID=tu_client_id
-SPOTIFY_CLIENT_SECRET=tu_client_secret
-SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
-```
-
-4. **Iniciar la aplicación**
-```bash
-npm run dev
-# o
-yarn dev
-```
-
-5. **Acceder a la aplicación**
-Abre tu navegador y ve a `http://localhost:3000`
-
----
-
-## 📁 Estructura del Proyecto
-
-```
-spotifork/
-├── public/                 # Archivos estáticos públicos
-├── src/
-│   ├── components/        # Componentes React reutilizables
-│   ├── pages/            # Páginas principales de la aplicación
-│   ├── hooks/            # Custom hooks de React
-│   ├── services/         # Servicios de API y autenticación
-│   ├── store/            # Gestión de estado global
-│   ├── styles/           # Estilos globales y temas
-│   ├── utils/            # Utilidades y funciones helper
-│   └── App.jsx           # Componente raíz
-├── .env.example          # Ejemplo de variables de entorno
-├── .gitignore           # Archivos ignorados por git
-├── LICENSE              # Licencia MIT
-├── package.json         # Dependencias y scripts
-└── README.md            # Este archivo
-```
-
----
-
-## 🔧 Tecnologías Utilizadas
-
-- **Frontend Framework**: React 18+
-- **Enrutamiento**: React Router DOM
-- **Gestión de Estado**: Context API / Zustand
-- **Estilizado**: CSS Modules / TailwindCSS
-- **HTTP Client**: Axios / Fetch API
-- **Autenticación**: Spotify OAuth 2.0
-- **Build Tool**: Vite
-- **Package Manager**: npm / yarn
+### v1.0.0 - Lanzamiento Inicial
+- Primera versión funcional
+- Interfaz básica de reproducción
+- Navegación simple
 
 ---
 
 ## 🤝 Contribuciones
 
-¡Las contribuciones son bienvenidas! Si deseas contribuir a SPOTIFORK:
+¡Las contribuciones son bienvenidas! Sigue estos pasos:
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -230,36 +200,40 @@ spotifork/
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-Por favor, lee nuestras [guías de contribución](CONTRIBUTING.md) antes de comenzar.
+### Guidelines para Contribuir
+- Sigue el estilo de código existente
+- Añade comentarios cuando sea necesario
+- Actualiza la documentación si es relevante
+- Asegúrate de que tu código no tenga errores de TypeScript
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+## 👥 Contacto y Soporte
+
+- **GitHub**: [@fazeurru](https://github.com/fazeurru)
+- **Repositorio**: [github.com/fazeurru/spotifork](https://github.com/fazeurru/spotifork)
+- **Issues**: [Reportar bugs o sugerencias](https://github.com/fazeurru/spotifork/issues)
 
 ---
 
 ## 🙏 Agradecimientos
 
-- **Spotify** por su increíble API y catálogo musical
-- **La comunidad open source** por las librerías y herramientas utilizadas
-- **Todos los contribuyentes** que hacen posible este proyecto
+- A la comunidad de React y TypeScript
+- A todos los contribuidores del proyecto
+- A los usuarios que reportan bugs y sugieren mejoras
 
 ---
 
-## 📞 Contacto y Soporte
+<div align="center">
 
-- **Repositorio**: [GitHub](https://github.com/TU_USUARIO/spotifork)
-- **Issues**: [Reportar bugs o sugerir features](https://github.com/TU_USUARIO/spotifork/issues)
-- **Discusión**: [GitHub Discussions](https://github.com/TU_USUARIO/spotifork/discussions)
+**Hecho con ❤️ usando React + TypeScript + Vite**
 
----
+⭐ ¡Si te gusta este proyecto, dale una estrella en GitHub!
 
-## ⭐ ¡Si te gusta este proyecto, dale una estrella!
-
-Tu apoyo motiva el desarrollo continuo de SPOTIFORK. ¡Gracias por usar nuestra aplicación!
-
----
-
-*Hecho con ❤️ para los amantes de la música* 
+</div>
