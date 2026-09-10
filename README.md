@@ -3,7 +3,7 @@
 > **Cliente no oficial de Spotify: El catálogo infinito de música y podcast en una sola app.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.2.0-green.svg)]()
+[![Version](https://img.shields.io/badge/version-1.3.0-green.svg)]()
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)]()
@@ -170,7 +170,43 @@ spotifork/
 
 ## 📝 Changelog
 
-### v1.2.0 (Actual) - 10 de septiembre de 2026
+### v1.3.0 (Actual) - 10 de septiembre de 2026
+**🎉 Nueva Interfaz de Ajustes por Categorías**
+
+**Nuevas Características**
+- ⚙️ **Ajustes organizados en 4 categorías**: General, Reproducción, Cuenta, Privacidad
+- 📋 **Sidebar lateral** para navegación intuitiva entre categorías
+- 💾 **Persistencia automática** de ajustes en localStorage
+- 🌓 **Toggle de modo oscuro** funcional en tiempo real
+- 🎚️ **Control de volumen** con slider interactivo y visualización en tiempo real
+- 🌐 **Selector de idioma**: Español, English, Português, Français
+- 🎵 **Calidad de audio**: Baja (96 kbps), Normal (160 kbps), Alta (320 kbps)
+- 🔔 **Notificaciones**: Activar/desactivar notificaciones de la app
+- ▶️ **Reproducción automática**: Configurar autoplay de siguiente canción
+- 🎼 **Crossfade**: Ajuste de transición entre canciones (0-12s)
+- 🔞 **Contenido explícito**: Mostrar/ocultar música con contenido explícito
+- 🕵️ **Sesión privada**: No guardar historial de reproducción
+- 📱 **Ahorro de datos**: Reducir consumo de datos móviles
+- 👤 **Edición de perfil**: Nombre de usuario y email configurables
+- 🔄 **Botón de reseteo** con confirmación de seguridad
+- 🚪 **Cerrar sesión**: Botón dedicado con estilo de peligro
+
+**Mejoras de Interfaz**
+- 🎨 Diseño moderno estilo Spotify con sidebar de navegación
+- ✨ Animaciones suaves en hover y transiciones entre categorías
+- 📱 Diseño completamente responsive para móviles
+- 🎯 Feedback visual inmediato al cambiar ajustes
+- 🖼️ Iconos emoji para cada categoría de ajustes
+- 📊 Layout de dos paneles: categorías + contenido
+
+**Mejoras Técnicas**
+- 🧩 Componentización avanzada de ajustes
+- 🔄 Estado global de ajustes con TypeScript
+- 💾 Hook personalizado para persistencia en localStorage
+- ⚡ Renderizado optimizado con React useEffect
+- ♿ Mejor accesibilidad con labels descriptivos
+
+### v1.2.0 - Función de Reseteo
 **Nuevas Características**
 - 🔄 Función de reseteo de aplicación completa
 - 🗑️ Limpieza de localStorage (favoritos, historial, ajustes)
