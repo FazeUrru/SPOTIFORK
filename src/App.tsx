@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 // Tipos
@@ -16,13 +16,47 @@ interface Playlist {
   tracks: Track[];
 }
 
+type SettingsCategory = 'general' | 'playback' | 'account' | 'privacy';
+
+interface AppSettings {
+  darkMode: boolean;
+  audioQuality: string;
+  autoplay: boolean;
+  crossfade: number;
+  volume: number;
+  explicitContent: boolean;
+  privateSession: boolean;
+  notifications: boolean;
+  language: string;
+}
+
+const defaultSettings: AppSettings = {
+  darkMode: true,
+  audioQuality: 'normal',
+  autoplay: true,
+  crossfade: 0,
+  volume: 75,
+  explicitContent: true,
+  privateSession: false,
+  notifications: true,
+  language: 'es',
+};
+
 function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'search' | 'library' | 'settings'>('home');
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
-  const [volume, setVolume] = useState(75);
   const [searchQuery, setSearchQuery] = useState('');
-  const [darkMode, setDarkMode] = useState(true);
+  const [settings, setSettings] = useState<AppSettings>(() => {
+    const saved = localStorage.getItem('spotifork_settings');
+    return saved ? JSON.parse(saved) : defaultSettings;
+  });
+  const [activeSettingsCategory, setActiveSettingsCategory] = useState<SettingsCategory>('general');
+
+  // Guardar ajustes en localStorage cuando cambian
+  useEffect(() => {
+    localStorage.setItem('spotifork_settings', JSON.stringify(settings));
+  }, [settings]);
 
   // Función para resetear la aplicación (V1.2.0)
   const resetApp = () => {
@@ -30,6 +64,11 @@ function App() {
       localStorage.clear();
       window.location.reload();
     }
+  };
+
+  // Funciones para actualizar ajustes
+  const updateSetting = <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => {
+    setSettings(prev => ({ ...prev, [key]: value }));
   };
 
   // Datos de ejemplo
@@ -58,8 +97,16 @@ function App() {
     setIsPlaying(true);
   };
 
+  // Categorías de ajustes
+  const settingsCategories: { id: SettingsCategory; label: string; icon: string }[] = [
+    { id: 'general', label: 'General', icon: '⚙️' },
+    { id: 'playback', label: 'Reproducción', icon: '▶️' },
+    { id: 'account', label: 'Cuenta', icon: '👤' },
+    { id: 'privacy', label: 'Privacidad', icon: '🔒' },
+  ];
+
   return (
-    <div className={`app ${darkMode ? 'dark' : 'light'}`}>
+    <div className={`app ${settings.darkMode ? 'dark' : 'light'}`}>
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="logo">
@@ -124,10 +171,10 @@ function App() {
           <div className="header-right">
             <button 
               className="theme-toggle"
-              onClick={() => setDarkMode(!darkMode)}
-              title={darkMode ? 'Modo claro' : 'Modo oscuro'}
+              onClick={() => updateSetting('darkMode', !settings.darkMode)}
+              title={settings.darkMode ? 'Modo claro' : 'Modo oscuro'}
             >
-              {darkMode ? '☀️' : '🌙'}
+              {settings.darkMode ? '☀️' : '🌙'}
             </button>
           </div>
         </header>
@@ -245,72 +292,233 @@ function App() {
           )}
 
           {activeTab === 'settings' && (
-            <section className="settings-section">
+            <section className="settings-section-v2">
               <h2>Ajustes</h2>
               
-              <div className="settings-group">
-                <h3>Preferencias</h3>
-                <div className="setting-item">
-                  <div className="setting-label">
-                    <span>Modo Oscuro</span>
-                    <small>Cambiar tema de la aplicación</small>
-                  </div>
-                  <label className="toggle">
-                    <input 
-                      type="checkbox" 
-                      checked={darkMode}
-                      onChange={() => setDarkMode(!darkMode)}
-                    />
-                    <span className="toggle-slider"></span>
-                  </label>
+              <div className="settings-container">
+                {/* Sidebar de categorías */}
+                <div className="settings-sidebar">
+                  {settingsCategories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      className={`settings-category-btn ${activeSettingsCategory === cat.id ? 'active' : ''}`}
+                      onClick={() => setActiveSettingsCategory(cat.id)}
+                    >
+                      <span className="cat-icon">{cat.icon}</span>
+                      <span>{cat.label}</span>
+                    </button>
+                  ))}
                 </div>
-                
-                <div className="setting-item">
-                  <div className="setting-label">
-                    <span>Calidad de Audio</span>
-                    <small>Alta calidad para mejor experiencia</small>
-                  </div>
-                  <select className="select-input">
-                    <option>Baja (96 kbps)</option>
-                    <option selected>Normal (160 kbps)</option>
-                    <option>Alta (320 kbps)</option>
-                  </select>
-                </div>
-              </div>
 
-              <div className="settings-group">
-                <h3>Reproducción</h3>
-                <div className="setting-item">
-                  <div className="setting-label">
-                    <span>Volumen por Defecto</span>
-                    <small>Nivel actual: {volume}%</small>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="100" 
-                    value={volume}
-                    onChange={(e) => setVolume(Number(e.target.value))}
-                    className="volume-slider"
-                  />
-                </div>
-                
-                <div className="setting-item">
-                  <div className="setting-label">
-                    <span>Reproducción Automática</span>
-                    <small>Reproducir siguiente canción automáticamente</small>
-                  </div>
-                  <label className="toggle">
-                    <input type="checkbox" defaultChecked />
-                    <span className="toggle-slider"></span>
-                  </label>
-                </div>
-              </div>
+                {/* Panel de ajustes */}
+                <div className="settings-panel">
+                  {/* GENERAL */}
+                  {activeSettingsCategory === 'general' && (
+                    <div className="settings-content">
+                      <h3>⚙️ General</h3>
+                      
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Modo Oscuro</span>
+                          <span className="setting-desc">Cambiar tema de la aplicación</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.darkMode}
+                            onChange={() => updateSetting('darkMode', !settings.darkMode)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
 
-              <div className="settings-group">
-                <h3>Cuenta</h3>
-                <button className="btn-secondary" onClick={resetApp}>Resetear Aplicación</button>
-                <button className="btn-secondary">Cerrar Sesión</button>
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Idioma</span>
+                          <span className="setting-desc">Selecciona tu idioma preferido</span>
+                        </div>
+                        <select 
+                          className="select-input"
+                          value={settings.language}
+                          onChange={(e) => updateSetting('language', e.target.value)}
+                        >
+                          <option value="es">Español</option>
+                          <option value="en">English</option>
+                          <option value="pt">Português</option>
+                          <option value="fr">Français</option>
+                        </select>
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Calidad de Audio</span>
+                          <span className="setting-desc">Selecciona la calidad de reproducción</span>
+                        </div>
+                        <select 
+                          className="select-input"
+                          value={settings.audioQuality}
+                          onChange={(e) => updateSetting('audioQuality', e.target.value)}
+                        >
+                          <option value="low">Baja (96 kbps)</option>
+                          <option value="normal">Normal (160 kbps)</option>
+                          <option value="high">Alta (320 kbps)</option>
+                        </select>
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Notificaciones</span>
+                          <span className="setting-desc">Recibir notificaciones de la app</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.notifications}
+                            onChange={() => updateSetting('notifications', !settings.notifications)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* REPRODUCCIÓN */}
+                  {activeSettingsCategory === 'playback' && (
+                    <div className="settings-content">
+                      <h3>▶️ Reproducción</h3>
+                      
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Volumen por Defecto</span>
+                          <span className="setting-desc">Nivel actual: {settings.volume}%</span>
+                        </div>
+                        <input 
+                          type="range" 
+                          min="0" 
+                          max="100" 
+                          value={settings.volume}
+                          onChange={(e) => updateSetting('volume', Number(e.target.value))}
+                          className="volume-slider"
+                        />
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Reproducción Automática</span>
+                          <span className="setting-desc">Reproducir siguiente canción automáticamente</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.autoplay}
+                            onChange={() => updateSetting('autoplay', !settings.autoplay)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Crossfade</span>
+                          <span className="setting-desc">Transición entre canciones: {settings.crossfade}s</span>
+                        </div>
+                        <input 
+                          type="range" 
+                          min="0" 
+                          max="12" 
+                          value={settings.crossfade}
+                          onChange={(e) => updateSetting('crossfade', Number(e.target.value))}
+                          className="volume-slider"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* CUENTA */}
+                  {activeSettingsCategory === 'account' && (
+                    <div className="settings-content">
+                      <h3>👤 Cuenta</h3>
+                      
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Nombre de Usuario</span>
+                          <span className="setting-desc">Tu nombre visible en la app</span>
+                        </div>
+                        <input type="text" className="text-input" defaultValue="Usuario" />
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Email</span>
+                          <span className="setting-desc">Correo electrónico asociado</span>
+                        </div>
+                        <input type="email" className="text-input" defaultValue="usuario@ejemplo.com" />
+                      </div>
+
+                      <div className="setting-item vertical">
+                        <button className="btn-secondary full-width">Editar Perfil</button>
+                        <button className="btn-secondary full-width" onClick={resetApp}>Resetear Aplicación</button>
+                        <button className="btn-danger full-width">Cerrar Sesión</button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* PRIVACIDAD */}
+                  {activeSettingsCategory === 'privacy' && (
+                    <div className="settings-content">
+                      <h3>🔒 Privacidad</h3>
+                      
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Contenido Explícito</span>
+                          <span className="setting-desc">Mostrar música con contenido explícito</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.explicitContent}
+                            onChange={() => updateSetting('explicitContent', !settings.explicitContent)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Sesión Privada</span>
+                          <span className="setting-desc">No guardar historial de reproducción</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.privateSession}
+                            onChange={() => updateSetting('privateSession', !settings.privateSession)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
+
+                      <div className="setting-item">
+                        <div className="setting-label">
+                          <span className="setting-title">Ahorro de Datos</span>
+                          <span className="setting-desc">Reducir consumo de datos móviles</span>
+                        </div>
+                        <label className="toggle">
+                          <input 
+                            type="checkbox" 
+                            checked={settings.dataSaver}
+                            onChange={() => updateSetting('dataSaver', !settings.dataSaver)}
+                          />
+                          <span className="toggle-slider"></span>
+                        </label>
+                      </div>
+
+                      <div className="privacy-note">
+                        <p>📋 Tus datos están protegidos. Consulta nuestra política de privacidad para más información.</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </section>
           )}
@@ -345,8 +553,8 @@ function App() {
               type="range" 
               min="0" 
               max="100" 
-              value={volume}
-              onChange={(e) => setVolume(Number(e.target.value))}
+              value={settings.volume}
+              onChange={(e) => updateSetting('volume', Number(e.target.value))}
               className="volume-slider-small"
             />
           </div>
