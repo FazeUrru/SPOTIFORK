@@ -3,7 +3,7 @@
 > **Cliente no oficial de Spotify: El catálogo infinito de música y podcast en una sola app.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.1.0-green.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.0-green.svg)]()
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)]()
@@ -127,7 +127,7 @@ spotifork/
 
 ## 🚀 Roadmap
 
-### ✅ Completado (v1.1.0)
+### ✅ Completado (v1.2.0)
 - [x] Interfaz de usuario moderna e intuitiva
 - [x] Navegación por pestañas (Inicio, Buscar, Biblioteca, Ajustes)
 - [x] Modo oscuro/claro
@@ -138,6 +138,9 @@ spotifork/
 - [x] Ecualizador animado
 - [x] Diseño responsivo
 - [x] Animaciones y transiciones suaves
+- [x] Función de reseteo de aplicación
+- [x] Limpieza de localStorage
+- [x] Confirmación de acciones críticas
 
 ### 🔄 En Desarrollo
 - [ ] Integración con API de Spotify
@@ -162,15 +165,21 @@ spotifork/
 
 ## 📝 Changelog
 
-### v1.1.0 (Actual) - 2024
+### v1.2.0 (Actual) - 2024
+**Nuevas Características**
+- 🔄 Función de reseteo de aplicación completa
+- 🗑️ Limpieza de localStorage (favoritos, historial, ajustes)
+- ⚠️ Confirmación de acciones críticas con diálogo
+- 🎯 Botón "Resetear Aplicación" en Ajustes > Cuenta
+
 **Mejoras de Interfaz**
-- ✨ Nueva interfaz más intuitiva y moderna
+- ✨ Interfaz aún más intuitiva y pulida
 - 🎨 Sistema de temas (oscuro/claro) completamente funcional
 - 🎯 Navegación mejorada con 4 secciones principales
 - 🎵 Player bar persistente con controles completos
 - ⚡ Animaciones optimizadas y transiciones suaves
 
-**Nuevas Características**
+**Características Existentes**
 - 🔍 Búsqueda en tiempo real con filtrado instantáneo
 - 📂 Exploración por categorías musicales
 - ⚙️ Panel de ajustes completo con múltiples opciones
@@ -182,6 +191,15 @@ spotifork/
 - ♿ Mejor accesibilidad
 - 🚀 Rendimiento optimizado
 - 🧹 Código refactorizado y limpio
+
+### v1.1.0 - Actualización de Interfaz
+- ✨ Nueva interfaz más intuitiva y moderna
+- 🎨 Sistema de temas (oscuro/claro) completamente funcional
+- 🎯 Navegación mejorada con 4 secciones principales
+- 🎵 Player bar persistente con controles completos
+- ⚡ Animaciones optimizadas y transiciones suaves
+- 🔍 Búsqueda en tiempo real con filtrado instantáneo
+- 📂 Exploración por categorías musicales
 
 ### v1.0.0 - Lanzamiento Inicial
 - Primera versión funcional

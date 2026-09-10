@@ -24,6 +24,14 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [darkMode, setDarkMode] = useState(true);
 
+  // Función para resetear la aplicación (V1.2.0)
+  const resetApp = () => {
+    if (window.confirm('¿Estás seguro de que quieres resetear la aplicación? Se borrarán tus favoritos, historial y ajustes.')) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  };
+
   // Datos de ejemplo
   const featuredPlaylists: Playlist[] = [
     { id: 1, name: "Éxitos del Momento", tracks: [] },
@@ -301,6 +309,7 @@ function App() {
 
               <div className="settings-group">
                 <h3>Cuenta</h3>
+                <button className="btn-secondary" onClick={resetApp}>Resetear Aplicación</button>
                 <button className="btn-secondary">Cerrar Sesión</button>
               </div>
             </section>
