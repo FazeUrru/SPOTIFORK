@@ -8,6 +8,9 @@
 [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)]()
 [![Vite](https://img.shields.io/badge/Vite-5.0-purple?logo=vite)]()
+[![Deployed](https://img.shields.io/badge/deployed-vercel-black?logo=vercel)]()
+
+**🌐 Demo en vivo**: [https://spotifork.vercel.app](https://spotifork.vercel.app)
 
 ---
 
@@ -24,6 +27,8 @@ Nuestro objetivo es proporcionar una alternativa que combine la potencia del cat
 - **Características Exclusivas**: Funcionalidades que van más allá del cliente oficial
 - **Código Abierto**: Transparente y community-driven
 - **Multiplataforma**: Accesible desde cualquier dispositivo con navegador web
+
+**📅 Última actualización**: 10 de septiembre de 2026
 
 ---
 
@@ -165,12 +170,13 @@ spotifork/
 
 ## 📝 Changelog
 
-### v1.2.0 (Actual) - 2024
+### v1.2.0 (Actual) - 10 de septiembre de 2026
 **Nuevas Características**
 - 🔄 Función de reseteo de aplicación completa
 - 🗑️ Limpieza de localStorage (favoritos, historial, ajustes)
 - ⚠️ Confirmación de acciones críticas con diálogo
 - 🎯 Botón "Resetear Aplicación" en Ajustes > Cuenta
+- 🔗 Nuevo dominio: https://spotifork.vercel.app
 
 **Mejoras de Interfaz**
 - ✨ Interfaz aún más intuitiva y pulida
@@ -237,6 +243,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 - **GitHub**: [@fazeurru](https://github.com/fazeurru)
 - **Repositorio**: [github.com/fazeurru/spotifork](https://github.com/fazeurru/spotifork)
 - **Issues**: [Reportar bugs o sugerencias](https://github.com/fazeurru/spotifork/issues)
+- **Demo en vivo**: [https://spotifork.vercel.app](https://spotifork.vercel.app)
 
 ---
 
