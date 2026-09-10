@@ -2,8 +2,8 @@
 # Dependencies
 node_modules/
 
-# Build artifacts
-dist/
+# Build artifacts (keep dist for Vercel deployment)
+# dist/
 
 # Environment
 .env
